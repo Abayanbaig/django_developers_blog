@@ -1,0 +1,172 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+
+{% if page == 'register' %}
+<!-- <form action=" {% url 'users:register' %} " method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+ 
+    
+    <p>
+        <input type="submit" value="Submit">
+    </p>
+
+    <p>
+        Already have an Account?
+        <a href="{% url 'users:login' %} ">Login</a>
+    </p>
+
+</form> -->
+<div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+</div>
+<div class="auth">
+  <div class="card">
+    <div class="auth__header text-center">
+      <a href="/">
+        <img src="images/icon.svg" alt="icon" />
+      </a>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h3>Account SignUp</h3>
+      <p>Create a new developer account</p>
+    </div>
+<div style="padding: 20px 20px 300px 20px;">
+    <h6 style="color:black;"> <b> Enjoy Free Code Service & Become A Developer</b> </h3>
+
+    <div class="card" style="
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width: 40%; float:left;    ">
+      <img src="{% static 'images/qrcode.jpg' %}" alt="Avatar" style="width:100%">
+      <div class="container" style="   padding: 2px 1px;" >
+        <h4 ><b>Pay 50 Rs</b></h4> 
+        <p>Registration fee</p> 
+      </div>
+          
+    </div>
+        <div style="float:right;width:190px;">
+      <br>
+      <h5 style="color:black;"> <b> INSTRUCTIONS : </b> </h5>
+
+      <p>@ YOU HAVE TO PAY 50 RS FOR REGISTRATION. </p>
+      <p>@ THEN YOU WILL ACCESS THE SERVICES. </p>
+      <P>@ IF YOUR PAYMENT WILL NOT RECEIVE THEN YOUR ACCOUNT WILL DISABLE SOON.</P>
+    </div>
+  </div>
+
+    <form action="{% url 'users:register' %}" method="POST" class="form auth__form">
+    
+      {% csrf_token %}
+      {% for field in form %}
+      <!-- Input:Text -->
+      <div class="form__field">
+        <label for="formInput#text">{{field.label}} </label>
+        {{field}}
+
+
+        <!-- {% if field.help_text %}
+        <small>{{field.help_text}}</small>
+        {% endif %} -->
+
+        {% for error in field.errors %}
+        <p style="color:red">{{error}} </p>
+
+        {% endfor %}
+
+      </div>
+      {% endfor %}
+
+
+      <div class="auth__actions">
+        <input class="btn btn--sub btn--lg" type="submit" value="Sign  In" />
+      </div>
+    </form>
+    <div class="auth__alternative">
+      <p>Already have an Account?</p>
+      <a href="{% url 'users:login' %}">Log In</a>
+    </div>
+  </div>
+</div>
+
+
+{% else %}
+<!-- <form action=" {% url 'users:login' %} " method="POST">
+    {% csrf_token %}
+    <p>
+        UserName:
+        <input type="text" name="username" placeholder="User Name">
+    </p>
+    <p>
+        Password:
+        <input type="password" name="password" placeholder="Password">
+    </p>
+    <p>
+        <input type="submit" value="Submit">
+    </p>
+    Don't have an Account?
+    <a href=" {% url 'users:register' %} ">Register</a>
+
+</form> -->
+
+<div class="auth">
+  <div class="card">
+    <div class="auth__header text-center">
+      <a href="/">
+        <img src="{% static 'images/icon.svg' %}" alt="icon" />
+      </a>
+      <h3>Account Login</h3>
+      <p>Hello Developer, Welcome Back!</p>
+    </div>
+
+    <form action="" method="POST" class="form auth__form">
+
+      {% csrf_token %}
+      <!-- Input:Email -->
+      <div class="form__field">
+        <label for="formInput#text">Username: </label>
+        <input class="input input--text" id="formInput#text" type="text" name="username"
+          placeholder="Enter your username..." />
+      </div>
+
+      <!-- Input:Password -->
+      <div class="form__field">
+        <label for="formInput#password">Password: </label>
+        <input class="input input--password" id="formInput#passowrd" type="password" name="password"
+          placeholder="••••••••" />
+      </div>
+      <div class="auth__actions">
+        <input class="btn btn--sub btn--lg" type="submit" value="Log In" />
+        <a href="{% url 'password_reset' %}">Forget Password?</a>
+      </div>
+    </form>
+    <div class="auth__alternative">
+      <p>Don’t have an Account?</p>
+      <a href="{% url 'users:register' %}">Register</a>
+    </div>
+  </div>
+</div>
+
+
+
+
+{% endif %}
+
+
+{% endblock %}
